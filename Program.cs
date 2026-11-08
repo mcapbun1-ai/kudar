@@ -2,7 +2,9 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using OpenCvSharp;
+using OpenCvSharp.Extensions;
 using System.Windows.Forms;
+using Point = System.Drawing.Point;
 
 namespace IceClicker;
 
@@ -85,7 +87,7 @@ internal sealed class MainForm : Form
             foreach (var scale in new[] { 0.55, 0.7, 0.85, 1.0, 1.15, 1.3, 1.45 })
             {
                 using var resized = new Mat();
-                Cv2.Resize(templateGray, resized, OpenCvSharp.Size.Zero, scale, scale);
+                Cv2.Resize(templateGray, resized, new OpenCvSharp.Size(0, 0), scale, scale);
                 if (resized.Width > screenshotGray.Width || resized.Height > screenshotGray.Height || resized.Width < 8 || resized.Height < 8) continue;
                 using var result = new Mat();
                 Cv2.MatchTemplate(screenshotGray, resized, result, TemplateMatchModes.CCoeffNormed);
