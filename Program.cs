@@ -2,7 +2,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using OpenCvSharp;
-using OpenCvSharp.Extensions;
 using System.Windows.Forms;
 
 namespace IceClicker;
